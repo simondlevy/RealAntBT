@@ -19,6 +19,8 @@ class RealAnt:
 
         Ax12.BAUDRATE = 1_000_000
 
+        Ax12.DEBUG = False
+
         # sets baudrate and opens com port
         Ax12.connect(self.devicename)
 
