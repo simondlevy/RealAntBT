@@ -32,13 +32,13 @@ class RealAnt:
 
     def set(self, values):
         '''
-        Accepts an eight-tuple of motor values in [-1,+1] and sets the motors
+        Accepts an eight-tuple of motor values in [-90,+90] and sets the motors
         to those values.  Use None for an unspecified value.
         '''
         for k in range(8):
             value = values[k]
             if value is not None:
-                self.servos[k].set_goal_position(int(value))
+                self.servos[k].set_goal_position(int(-3.36*value+512))
 
     def disconnect(self):
 

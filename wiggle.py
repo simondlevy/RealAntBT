@@ -22,23 +22,23 @@ def moveInner(ant, pos):
 
 
 def stand(ant):
-    moveInner(ant, 512)
-    moveOuter(ant, 300)
+    moveInner(ant, 0)
+    moveOuter(ant, 60)
 
 
 def sit(ant):
-    moveAll(ant, 512)
+    moveAll(ant, 0)
 
 
 def rotate(ant, rot="CW"):
     sit(ant)
     sleep(0.5)
-    angle = 200 if rot == "CW" else 820
+    angle = 90 if rot == "CW" else -90
     moveInner(ant, angle)
     sleep(0.5)
     stand(ant)
     sleep(0.5)
-    moveInner(ant, 512)
+    moveInner(ant, 0)
 
 
 def main():
