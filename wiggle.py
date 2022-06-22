@@ -3,7 +3,7 @@
 Make the RealAnt wiggle a bit in place
 '''
 
-from movement import sit, stand, rotate, connect
+from realant import sit, stand, rotate, connect
 from ax12 import Ax12
 
 from time import sleep

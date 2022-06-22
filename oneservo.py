@@ -3,7 +3,7 @@
 Run one servo on the RealAnt
 '''
 
-from ax12.movement import moveServo, connect
+from realant import moveServo, connect
 from ax12 import Ax12
 
 from optparse import OptionParser
@@ -14,8 +14,10 @@ from time import sleep
 # 600 = 45 deg
 # 775 = 80 deg (max safe up)
 
-IDX = 8
-POS = 600
+MOTOR   = 8
+POS_MIN = 210
+POS_MAX = 775
+DELAY   = 0.1
 
 def main():
 
@@ -28,7 +30,7 @@ def main():
 
     servos = connect(opts.port)
 
-    moveServo(servos, IDX, POS)
+    moveServo(servos, MOTOR, int((POS_MIN+POS_MAX)/2))
 
     sleep(1)
 
