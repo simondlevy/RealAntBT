@@ -3,34 +3,64 @@
 Make the RealAnt wiggle a bit in place
 '''
 
-from realant import sit, stand, rotate, connect
-from ax12 import Ax12
+from realant import RealAnt
 
 from time import sleep
 from optparse import OptionParser
+
+
+def moveAll(ant, pos):
+    ant.set([pos]*8)
+
+
+def moveOuter(ant, pos):
+    ant.set([pos, None, pos, None, pos, None, pos, None])
+
+
+def moveInner(ant, pos):
+    ant.set([None, pos, None, pos, None, pos, None, pos])
+
+
+def stand(ant):
+    moveInner(ant, 512)
+    moveOuter(ant, 300)
+
+
+def sit(ant):
+    moveAll(ant, 512)
+
+
+def rotate(ant, rot="CW"):
+    sit(ant)
+    sleep(0.5)
+    angle = 200 if rot == "CW" else 820
+    moveInner(ant, angle)
+    sleep(0.5)
+    stand(ant)
+    sleep(0.5)
+    moveInner(ant, 512)
+
 
 def main():
 
     # Allow user to specify a non-default com port
     parser = OptionParser()
     parser.add_option('-p', '--port', dest='port',
-            help='com port, metavar="FILE',
-            default='/dev/ttyACM0')
-    (opts,_) = parser.parse_args()
+                      help='com port, metavar="FILE',
+                      default='/dev/ttyACM0')
+    (opts, _) = parser.parse_args()
 
-    servos = connect(opts.port)
+    ant = RealAnt(opts.port)
 
-    sit(servos)
+    ant.connect()
+
+    sit(ant)
     sleep(1)
-    stand(servos)
+    stand(ant)
     sleep(1)
-    # flip(servos)
-    rotate(servos)
-    # sleep(1)
-    # walk(servos)
-    # sit(servos)
+    rotate(ant)
 
-    Ax12.disconnect()
+    ant.disconnect()
 
 
 if __name__ == "__main__":
