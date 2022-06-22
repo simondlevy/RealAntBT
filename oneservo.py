@@ -1,13 +1,21 @@
 #!/usr/bin/python3
 '''
-Make the RealAnt wiggle a bit in place
+Run one servo on the RealAnt
 '''
 
-from movement import sit, stand, rotate, connect
+from ax12.movement import moveServo, connect
 from ax12 import Ax12
 
-from time import sleep
 from optparse import OptionParser
+from time import sleep
+
+# 210 = 90 deg (down)
+# 512 = 0 deg (straight out)
+# 600 = 45 deg
+# 775 = 80 deg (max safe up)
+
+IDX = 8
+POS = 600
 
 def main():
 
@@ -20,15 +28,9 @@ def main():
 
     servos = connect(opts.port)
 
-    sit(servos)
+    moveServo(servos, IDX, POS)
+
     sleep(1)
-    stand(servos)
-    sleep(1)
-    # flip(servos)
-    rotate(servos)
-    # sleep(1)
-    # walk(servos)
-    # sit(servos)
 
     Ax12.disconnect()
 
