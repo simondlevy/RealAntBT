@@ -53,6 +53,7 @@ from isaacgymenvs.learning import amp_players
 from isaacgymenvs.learning import amp_models
 from isaacgymenvs.learning import amp_network_builder
 
+from actuator import Actuator
 
 ## OmegaConf & Hydra Config
 
@@ -129,8 +130,7 @@ def launch_rlg_hydra(cfg: DictConfig):
     with open(os.path.join(experiment_dir, 'config.yaml'), 'w') as f:
         f.write(OmegaConf.to_yaml(cfg))
 
-    runner.run({ 'train': False, 'play': True,
-    })
+    runner.run({ 'train': False, 'play': True, }) 
 
 if __name__ == "__main__":
     launch_rlg_hydra()
