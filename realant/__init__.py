@@ -9,6 +9,9 @@ class RealAnt:
 
         self.servos = [None]*8
 
+        self.MINVAL = 210
+        self.MAXVAL = 775
+
     def connect(self):
 
         # e.g 'COM3' windows or '/dev/ttyUSB0' for Linux
@@ -33,7 +36,7 @@ class RealAnt:
         for k in range(8):
             value = values[k]
             if value is not None:
-                self.servos[k].set_goal_position(value)
+                self.servos[k].set_goal_position(int(value))
 
     def disconnect(self):
 
