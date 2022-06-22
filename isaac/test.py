@@ -130,7 +130,9 @@ def launch_rlg_hydra(cfg: DictConfig):
     with open(os.path.join(experiment_dir, 'config.yaml'), 'w') as f:
         f.write(OmegaConf.to_yaml(cfg))
 
-    runner.run({ 'train': False, 'play': True, }) 
+    print('RUNNER: ************************' + str(type(runner)))
 
-if __name__ == "__main__":
+    runner.run({ 'train': False, 'play': True, 'actuator': Actuator()}) 
+
+if __name__ == '__main__':
     launch_rlg_hydra()

@@ -30,6 +30,6 @@
 
 class Actuator:
 
-    def actuate(self, action):
+    def use(self, action):
 
         print(action)
