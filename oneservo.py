@@ -12,9 +12,8 @@ from realant import RealAnt
 from time import sleep
 from optparse import OptionParser
 
-JOINT = 1
+JOINT = 0
 DELAY = .01
-
 
 def main():
 

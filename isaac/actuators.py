@@ -16,15 +16,11 @@ class RealActuator:
         self.ant = RealAnt(port)
         self.ant.connect()
 
+        self.JOINT_MAP = [1, 0, 7, 6, 5, 4, 3, 2]
+
     def use(self, action):
 
-        MOTOR = 0
-
-        angles = [None]*8
-
-        angles[MOTOR] = action[MOTOR] * 45
-
-        self.ant.set(angles)
+        self.ant.set(action[self.JOINT_MAP] * 45)
 
 
 class PrintActuator:
