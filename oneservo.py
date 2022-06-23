@@ -9,6 +9,7 @@ from time import sleep
 from optparse import OptionParser
 
 JOINT = 1
+DELAY = .01
 
 
 def main():
@@ -22,15 +23,13 @@ def main():
 
     ant = RealAnt(opts.port)
 
+    ant.connect()
+
     angles = [None]*8
 
     angles[JOINT] = 0
 
-    print(angles)
-
     ant.set(angles)
-
-    exit(0)
 
     sleep(1)
 
@@ -40,7 +39,7 @@ def main():
 
         ant.set(angles)
 
-        sleep(.1)
+        sleep(DELAY)
 
     ant.connect()
 
