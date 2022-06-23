@@ -1,41 +1,52 @@
 #!/usr/bin/python3
 '''
-Run one servo on the RealAnt
+Make the RealAnt wiggle a bit in place
 '''
 
-from realant import moveServo, connect
-from ax12 import Ax12
+from realant import RealAnt
 
-from optparse import OptionParser
 from time import sleep
+from optparse import OptionParser
 
-# 210 = 90 deg (down)
-# 512 = 0 deg (straight out)
-# 600 = 45 deg
-# 775 = 80 deg (max safe up)
+JOINT = 1
 
-MOTOR   = 8
-POS_MIN = 210
-POS_MAX = 775
-DELAY   = 0.1
 
 def main():
 
     # Allow user to specify a non-default com port
     parser = OptionParser()
     parser.add_option('-p', '--port', dest='port',
-            help='com port, metavar="FILE',
-            default='/dev/ttyACM0')
-    (opts,_) = parser.parse_args()
+                      help='com port, metavar="FILE',
+                      default='/dev/ttyACM0')
+    (opts, _) = parser.parse_args()
 
-    servos = connect(opts.port)
+    ant = RealAnt(opts.port)
 
-    moveServo(servos, MOTOR, int((POS_MIN+POS_MAX)/2))
+    angles = [None]*8
+
+    angles[JOINT] = 0
+
+    print(angles)
+
+    ant.set(angles)
+
+    exit(0)
 
     sleep(1)
 
-    Ax12.disconnect()
+    for a in range(0, 45):
+
+        angles[JOINT] = a
+
+        ant.set(angles)
+
+        sleep(.1)
+
+    ant.connect()
+
+    ant.disconnect()
 
 
 if __name__ == "__main__":
+
     main()

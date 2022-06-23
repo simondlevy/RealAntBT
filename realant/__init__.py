@@ -12,6 +12,8 @@ class RealAnt:
         self.MINVAL = 210
         self.MAXVAL = 775
 
+        self.connected = False
+
     def connect(self):
 
         # e.g 'COM3' windows or '/dev/ttyUSB0' for Linux
@@ -30,11 +32,18 @@ class RealAnt:
             servo.set_moving_speed(200)
             self.servos[k] = servo
 
+        self.connected = True
+
     def set(self, values):
         '''
         Accepts an eight-tuple of motor values in [-90,+90] and sets the motors
         to those values.  Use None for an unspecified value.
         '''
+
+        if not self.connected:
+            raise Exception('Not connected: did you call connect()?')
+
+
         for k in range(8):
             value = values[k]
             if value is not None:
