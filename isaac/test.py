@@ -53,7 +53,7 @@ from isaacgymenvs.learning import amp_players
 from isaacgymenvs.learning import amp_models
 from isaacgymenvs.learning import amp_network_builder
 
-from actuator import Actuator
+from actuators import PrintActuator # just prints the motor values
 
 ## OmegaConf & Hydra Config
 
@@ -132,7 +132,7 @@ def launch_rlg_hydra(cfg: DictConfig):
 
     print('RUNNER: ************************' + str(type(runner)))
 
-    runner.run({ 'train': False, 'play': True, 'actuator': Actuator()}) 
+    runner.run({ 'train': False, 'play': True, 'actuator': PrintActuator()}) 
 
 if __name__ == '__main__':
     launch_rlg_hydra()
