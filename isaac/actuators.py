@@ -28,7 +28,16 @@
 # OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+class RealActuator:
+
+    def use(self, action):
+
+        print(action)
+
 class PrintActuator:
+    '''
+    A stubbed actuator for testing; just prints out the motor values
+    '''
 
     def use(self, action):
 
