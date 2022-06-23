@@ -8,6 +8,7 @@
 
 from realant import RealAnt
 
+
 class RealActuator:
 
     def __init__(self, port='/dev/ttyACM0'):
@@ -17,7 +18,13 @@ class RealActuator:
 
     def use(self, action):
 
-        print(action)
+        MOTOR = 0
+
+        angles = [None]*8
+
+        angles[MOTOR] = action[MOTOR] * 45
+
+        self.ant.set(angles)
 
 
 class PrintActuator:
@@ -28,6 +35,7 @@ class PrintActuator:
     def use(self, action):
 
         print(action)
+
 
 def main():
 
