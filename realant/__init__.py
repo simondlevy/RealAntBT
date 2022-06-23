@@ -9,8 +9,8 @@ class RealAnt:
 
         self.servos = [None]*8
 
-        self.MINVAL = 210
-        self.MAXVAL = 775
+        self.MIN_ANGLE = -60
+        self.MAX_ANGLE = +60
 
         self.connected = False
 
@@ -34,20 +34,24 @@ class RealAnt:
 
         self.connected = True
 
-    def set(self, values):
+    def set(self, angles):
         '''
-        Accepts an eight-tuple of motor values in [-90,+90] and sets the motors
-        to those values.  Use None for an unspecified value.
+        Accepts an eight-tuple of motor angles in [-90,+90] and sets the motors
+        to those angles.  Use None for an unspecified angle.
         '''
 
         if not self.connected:
             raise Exception('Not connected: did you call connect()?')
 
-
         for k in range(8):
-            value = values[k]
-            if value is not None:
-                self.servos[k].set_goal_position(int(-3.36*value+512))
+
+            angle = angles[k]
+
+            if angle is not None: 
+
+                angle = max(min(angle, self.MAX_ANGLE), self.MIN_ANGLE)
+
+                self.servos[k].set_goal_position(int(-3.36*angle+512))
 
     def disconnect(self):
 
