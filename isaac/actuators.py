@@ -10,9 +10,10 @@ from realant import RealAnt
 
 class RealActuator:
 
-    def __init__(self):
+    def __init__(self, port='/dev/ttyACM0'):
 
-        return
+        self.ant = RealAnt(port)
+        self.ant.connect()
 
     def use(self, action):
 
