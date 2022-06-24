@@ -13,7 +13,6 @@ from time import sleep
 from optparse import OptionParser
 
 JOINT = 3
-DELAY = .01
 ANGLE_STEP = 1
 
 
@@ -41,7 +40,6 @@ def main():
 
             angles[JOINT] = a
             ant.set(angles)
-            sleep(DELAY)
 
             print(ant.get())
 
