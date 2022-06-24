@@ -6,6 +6,8 @@
 #
 # MIT License
 
+HEADLESS = False
+
 import isaacgym
 
 import os
@@ -31,8 +33,6 @@ from isaacgymenvs.learning import amp_network_builder
 
 # from actuators import PrintActuator as Actuator # just prints the motor values
 from actuators import RealActuator as Actuator
-
-HEADLESS = True
 
 ## OmegaConf & Hydra Config
 

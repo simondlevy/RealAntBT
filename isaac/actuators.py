@@ -8,6 +8,8 @@
 
 from realant import RealAnt
 
+from time import sleep
+
 
 class RealActuator:
 
@@ -18,9 +20,15 @@ class RealActuator:
 
         self.JOINT_MAP = [1, 0, 7, 6, 5, 4, 3, 2]
 
+        self.DELAY = 0.05
+
     def use(self, action):
 
-        self.ant.set(action[self.JOINT_MAP] * self.ant.MAX_ANGLE)
+        angles = action[self.JOINT_MAP] * self.ant.MAX_ANGLE
+
+        sleep(self.DELAY)
+
+        self.ant.set(angles)
 
 
 class PrintActuator:
