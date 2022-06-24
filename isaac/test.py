@@ -32,6 +32,8 @@ from isaacgymenvs.learning import amp_network_builder
 # from actuators import PrintActuator as Actuator # just prints the motor values
 from actuators import RealActuator as Actuator
 
+HEADLESS = True
+
 ## OmegaConf & Hydra Config
 
 # Resolvers used in hydra configs
@@ -66,7 +68,7 @@ def launch_rlg_hydra(cfg: DictConfig):
         cfg.sim_device,
         cfg.rl_device,
         cfg.graphics_device_id,
-        cfg.headless,
+        HEADLESS, # cfg.headless,
         multi_gpu=cfg.multi_gpu,
     )
 

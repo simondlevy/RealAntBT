@@ -12,7 +12,7 @@ from realant import RealAnt
 from time import sleep
 from optparse import OptionParser
 
-JOINT = 1
+JOINT = 6
 DELAY = .01
 ANGLE_STEP = 1
 
