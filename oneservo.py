@@ -12,10 +12,9 @@ from realant import RealAnt
 from time import sleep
 from optparse import OptionParser
 
-JOINT = 0
+JOINT = 1
 DELAY = .01
 ANGLE_STEP = 1
-MAX_ANGLE = 45
 
 
 def main():
@@ -46,9 +45,9 @@ def main():
 
             a += d*ANGLE_STEP
 
-            if a > MAX_ANGLE:
+            if a >= ant.MAX_ANGLE:
                 d = -1
-            if a < -MAX_ANGLE:
+            if a <= -ant.MAX_ANGLE:
                 d = +1
 
         except KeyboardInterrupt:

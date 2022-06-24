@@ -9,8 +9,10 @@ class RealAnt:
 
         self.servos = [None]*8
 
-        self.MIN_ANGLE = -60
-        self.MAX_ANGLE = +60
+        #self.MIN_ANGLE = -90
+        #self.MAX_ANGLE = +90
+
+        self.MAX_ANGLE = 90
 
         self.connected = False
 
@@ -49,7 +51,7 @@ class RealAnt:
 
             if angle is not None: 
 
-                angle = max(min(angle, self.MAX_ANGLE), self.MIN_ANGLE)
+                angle = max(min(angle, self.MAX_ANGLE), -self.MAX_ANGLE)
 
                 self.servos[k].set_goal_position(int(-3.36*angle+512))
 
