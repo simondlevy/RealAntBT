@@ -14,6 +14,9 @@ from optparse import OptionParser
 
 JOINT = 0
 DELAY = .01
+ANGLE_STEP = 1
+MAX_ANGLE = 45
+
 
 def main():
 
@@ -30,21 +33,26 @@ def main():
 
     angles = [None]*8
 
-    angles[JOINT] = 0
+    a = 0
+    d = +1
 
-    ant.set(angles)
+    while True:
 
-    sleep(1)
+        try:
 
-    for a in range(0, 45):
+            angles[JOINT] = a
+            ant.set(angles)
+            sleep(DELAY)
 
-        angles[JOINT] = a
+            a += d*ANGLE_STEP
 
-        ant.set(angles)
+            if a > MAX_ANGLE:
+                d = -1
+            if a < -MAX_ANGLE:
+                d = +1
 
-        sleep(DELAY)
-
-    ant.connect()
+        except KeyboardInterrupt:
+            break
 
     ant.disconnect()
 
