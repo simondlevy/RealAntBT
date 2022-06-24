@@ -9,9 +9,6 @@ class RealAnt:
 
         self.servos = [None]*8
 
-        #self.MIN_ANGLE = -90
-        #self.MAX_ANGLE = +90
-
         self.MAX_ANGLE = 90
 
         self.connected = False
@@ -49,11 +46,18 @@ class RealAnt:
 
             angle = angles[k]
 
-            if angle is not None: 
+            if angle is not None:
 
                 angle = max(min(angle, self.MAX_ANGLE), -self.MAX_ANGLE)
 
                 self.servos[k].set_goal_position(int(-3.36*angle+512))
+
+    def get(self):
+        '''
+        Returns current joint angles
+        '''
+
+        return tuple(servo.get_present_position() for servo in self.servos)
 
     def disconnect(self):
 

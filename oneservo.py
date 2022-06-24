@@ -43,6 +43,8 @@ def main():
             ant.set(angles)
             sleep(DELAY)
 
+            print(ant.get())
+
             a += d*ANGLE_STEP
 
             if a >= ant.MAX_ANGLE:
