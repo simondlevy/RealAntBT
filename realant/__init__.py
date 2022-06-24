@@ -57,7 +57,7 @@ class RealAnt:
         Returns current joint angles
         '''
 
-        return tuple(servo.get_present_position() for servo in self.servos)
+        return tuple(int((servo.get_present_position()-512)/-3.36) for servo in self.servos)
 
     def disconnect(self):
 
