@@ -31,8 +31,9 @@ from isaacgymenvs.learning import amp_players
 from isaacgymenvs.learning import amp_models
 from isaacgymenvs.learning import amp_network_builder
 
-# from actuators import PrintActuator as Actuator # just prints the motor values
-from actuators import RealActuator as Actuator
+# from actuators import RealActuator as Actuator
+from actuators import PrintActuator as Actuator
+from gaits import Motionless as Gait
 
 ## OmegaConf & Hydra Config
 
@@ -109,7 +110,7 @@ def launch_rlg_hydra(cfg: DictConfig):
     with open(os.path.join(experiment_dir, 'config.yaml'), 'w') as f:
         f.write(OmegaConf.to_yaml(cfg))
 
-    runner.run({ 'train': False, 'play': True, 'actuator': Actuator()}) 
+    runner.run({ 'train': False, 'play': True, 'actuator': Actuator(), 'gait': Gait()}) 
 
 if __name__ == '__main__':
     launch_rlg_hydra()
