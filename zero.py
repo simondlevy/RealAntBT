@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 '''
-Make the RealAnt wiggle a bit in place
+Resets the real ant's joint angles to zero
 
 Copyright (c) 2022 Matt Stock, Simon D. Levy
 
@@ -12,7 +12,7 @@ from realant import RealAnt
 from time import sleep
 from optparse import OptionParser
 
-JOINT = 3
+JOINT = 6
 DELAY = .01
 ANGLE_STEP = 1
 
@@ -30,28 +30,11 @@ def main():
 
     ant.connect()
 
-    angles = [None]*8
+    angles = [0]*8
 
-    a = 0
-    d = +1
+    ant.set(angles)
 
-    while True:
-
-        try:
-
-            angles[JOINT] = a
-            ant.set(angles)
-            sleep(DELAY)
-
-            a += d*ANGLE_STEP
-
-            if a >= ant.MAX_ANGLE:
-                d = -1
-            if a <= -ant.MAX_ANGLE:
-                d = +1
-
-        except KeyboardInterrupt:
-            break
+    sleep(1)
 
     ant.disconnect()
 

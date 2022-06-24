@@ -20,7 +20,7 @@ class RealActuator:
 
     def use(self, action):
 
-        self.ant.set(action[self.JOINT_MAP] * 45)
+        self.ant.set(action[self.JOINT_MAP] * self.ant.MAX_ANGLE)
 
 
 class PrintActuator:
