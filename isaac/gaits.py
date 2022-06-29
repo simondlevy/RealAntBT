@@ -24,9 +24,10 @@ class Walking:
 
     def __init__(self):
 
-        self.angles = np.array([
+        self.JOINT_MAP = [1, 0, 7, 6, 5, 4, 3, 2]
 
-            [-90, -50, -90, 0, -90, 0, -90, 50],
+        self.ANGLES = np.array([
+
             [-45, -50, -90, 0, -90, 0, -90, 50],
             [-45, 20, -90, 0, -90, 0, -90, 50],
             [-90, 20, -90, 0, -90, 0, -90, 50],
@@ -47,8 +48,8 @@ class Walking:
 
     def get(self):
 
-        action = self.angles[self.index]
+        action = self.ANGLES[self.index][self.JOINT_MAP]
 
-        self.index = (self.index + 1) % len(self.angles)
+        self.index = (self.index + 1) % len(self.ANGLES)
 
         return action
