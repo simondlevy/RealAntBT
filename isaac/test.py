@@ -33,7 +33,7 @@ from isaacgymenvs.learning import amp_network_builder
 
 # sdl: from actuators import RealActuator as Actuator
 from actuators import NullActuator as Actuator
-from gaits import Motionless as Gait
+from gaits import Walking as Gait
 
 ## OmegaConf & Hydra Config
 
