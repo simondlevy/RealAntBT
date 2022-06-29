@@ -41,6 +41,15 @@ class PrintActuator:
         print(action)
 
 
+class NullActuator:
+    '''
+    A stubbed actuator for testing; does nothing
+    '''
+
+    def use(self, action):
+
+        return
+
 def main():
 
     RealActuator()

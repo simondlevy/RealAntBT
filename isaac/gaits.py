@@ -15,7 +15,7 @@ class Motionless:
 
         return
 
-    def override(self):
+    def get(self):
 
         return np.zeros(8)
 
