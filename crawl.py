@@ -38,41 +38,47 @@ def stand(ant):
     ant.set([45, 50, 45, -50, 45, 0, 45, 0])
 
 
+def step(ant):
+
+    ant.set([45, 50, 45, -50, 45, 0, 45, 0])
+    sleep(SLEEP_TIME)
+    ant.set([30, 50, 45, -50, 45, 0, 45, 0])
+    sleep(SLEEP_TIME)
+    ant.set([30, -20, 45, -50, 45, 0, 45, 0])
+    sleep(SLEEP_TIME)
+    ant.set([45, -20, 45, -50, 45, 0, 45, 0])
+    sleep(SLEEP_TIME)
+    ant.set([45, 0, 45, 0, 45, -20, 45, -50])
+    sleep(SLEEP_TIME)
+    ant.set([45, 0, 45, 0, 30, -20, 45, -50])
+    sleep(SLEEP_TIME)
+    ant.set([45, 0, 45, 0, 30, 50, 45, -50])
+    sleep(SLEEP_TIME)
+    ant.set([45, 0, 45, 0, 45, 50, 45, -50])
+    sleep(SLEEP_TIME)
+    ant.set([45, 0, 45, 0, 45, 50, 30, -50])
+    sleep(SLEEP_TIME)
+    ant.set([45, 0, 45, 0, 45, 50, 30, 20])
+    sleep(SLEEP_TIME)
+    ant.set([45, 0, 45, 0, 45, 50, 45, 20])
+    sleep(SLEEP_TIME)
+    ant.set([45, 50, 45, 20, 45, 0, 45, 0])
+    sleep(SLEEP_TIME)
+    ant.set([45, 50, 30, 20, 45, 0, 45, 0])
+    sleep(SLEEP_TIME)
+    ant.set([45, 50, 30, -50, 45, 0, 45, 0])
+    sleep(SLEEP_TIME)
+
 
 def crawl(ant):
 
-
     while True:
 
-        ant.set([45, 50, 45, -50, 45, 0, 45, 0])
-        sleep(SLEEP_TIME)
-        ant.set([30, 50, 45, -50, 45, 0, 45, 0])
-        sleep(SLEEP_TIME)
-        ant.set([30, -20, 45, -50, 45, 0, 45, 0])
-        sleep(SLEEP_TIME)
-        ant.set([45, -20, 45, -50, 45, 0, 45, 0])
-        sleep(SLEEP_TIME)
-        ant.set([45, 0, 45, 0, 45, -20, 45, -50])
-        sleep(SLEEP_TIME)
-        ant.set([45, 0, 45, 0, 30, -20, 45, -50])
-        sleep(SLEEP_TIME)
-        ant.set([45, 0, 45, 0, 30, 50, 45, -50])
-        sleep(SLEEP_TIME)
-        ant.set([45, 0, 45, 0, 45, 50, 45, -50])
-        sleep(SLEEP_TIME)
-        ant.set([45, 0, 45, 0, 45, 50, 30, -50])
-        sleep(SLEEP_TIME)
-        ant.set([45, 0, 45, 0, 45, 50, 30, 20])
-        sleep(SLEEP_TIME)
-        ant.set([45, 0, 45, 0, 45, 50, 45, 20])
-        sleep(SLEEP_TIME)
-        ant.set([45, 50, 45, 20, 45, 0, 45, 0])
-        sleep(SLEEP_TIME)
-        ant.set([45, 50, 30, 20, 45, 0, 45, 0])
-        sleep(SLEEP_TIME)
-        ant.set([45, 50, 30, -50, 45, 0, 45, 0])
-        sleep(SLEEP_TIME)
+        try:
+            step(ant)
 
+        except KeyboardInterrupt:
+            break
 
 def main():
 
