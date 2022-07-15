@@ -1,39 +1,97 @@
 #!/usr/bin/python3
 
+
 import numpy as np
+from realant import RealAnt
+
 from time import sleep
+from optparse import OptionParser
 
-index = 0
+SLEEP_TIME = 0.4
 
-angles = np.array([
+def stand(ant):
 
-    [-90, -50, -90, 0, -90, 0, -90, 50],
-    [-45, -50, -90, 0, -90, 0, -90, 50],
-    [-45, 20, -90, 0, -90, 0, -90, 50],
-    [-90, 20, -90, 0, -90, 0, -90, 50],
-    [-90, 0, -90, 50, -90, 20, -90, 0],
-    [-90, 0, -90, 50, -45, 20, -90, 0],
-    [-90, 0, -90, 50, -45, -50, -90, 0],
-    [-90, 0, -90, 50, -90, -50, -90, 0],
-    [-90, 0, -45, 50, -90, -50, -90, 0],
-    [-90, 0, -45, -20, -90, -50, -90, 0],
-    [-90, 0, -90, -20, -90, -50, -90, 0],
-    [-90, -50, -90, 0, -90, 0, -90, -20],
-    [-90, -50, -90, 0, -90, 0, -45, -20],
-    [-90, -50, -90, 0, -90, 0, -45, 50],
-    [-90, -50, -90, 0, -90, 0, -90, 50]
-    ]) / 90
+    ant.set([45, None, 45, None, 45, None, 45, None])
+    sleep(SLEEP_TIME)
+    ant.set([30, None, 45, None, 45, None, 45, None])
+    sleep(SLEEP_TIME)
+    ant.set([30, 50, 45, None, 45, None, 45, None])
+    sleep(SLEEP_TIME)
+    ant.set([45, 50, 45, None, 45, None, 45, None])
+    sleep(SLEEP_TIME)
+    ant.set([45, 50, 30, None, 45, None, 45, None])
+    sleep(SLEEP_TIME)
+    ant.set([45, 50, 30, -50, 45, None, 45, None])
+    sleep(SLEEP_TIME)
+    ant.set([45, 50, 45, -50, 45, None, 45, None])
+    sleep(SLEEP_TIME)
+    ant.set([45, 50, 45, -50, 30, None, 45, None])
+    sleep(SLEEP_TIME)
+    ant.set([45, 50, 45, -50, 30, 0, 45, None])
+    sleep(SLEEP_TIME)
+    ant.set([45, 50, 45, -50, 45, 0, 45, None])
+    sleep(SLEEP_TIME)
+    ant.set([45, 50, 45, -50, 45, 0, 30, None])
+    sleep(SLEEP_TIME)
+    ant.set([45, 50, 45, -50, 45, 0, 30, 0])
+    sleep(SLEEP_TIME)
+    ant.set([45, 50, 45, -50, 45, 0, 45, 0])
 
-while True:
 
-    try:
 
-        print(angles[index])
+def crawl(ant):
 
-        index = (index + 1) % len(angles)
 
-        sleep(.1)
+    while True:
 
-    except KeyboardInterrupt:
+        ant.set([45, 50, 45, -50, 45, 0, 45, 0])
+        sleep(SLEEP_TIME)
+        ant.set([30, 50, 45, -50, 45, 0, 45, 0])
+        sleep(SLEEP_TIME)
+        ant.set([30, -20, 45, -50, 45, 0, 45, 0])
+        sleep(SLEEP_TIME)
+        ant.set([45, -20, 45, -50, 45, 0, 45, 0])
+        sleep(SLEEP_TIME)
+        ant.set([45, 0, 45, 0, 45, -20, 45, -50])
+        sleep(SLEEP_TIME)
+        ant.set([45, 0, 45, 0, 30, -20, 45, -50])
+        sleep(SLEEP_TIME)
+        ant.set([45, 0, 45, 0, 30, 50, 45, -50])
+        sleep(SLEEP_TIME)
+        ant.set([45, 0, 45, 0, 45, 50, 45, -50])
+        sleep(SLEEP_TIME)
+        ant.set([45, 0, 45, 0, 45, 50, 30, -50])
+        sleep(SLEEP_TIME)
+        ant.set([45, 0, 45, 0, 45, 50, 30, 20])
+        sleep(SLEEP_TIME)
+        ant.set([45, 0, 45, 0, 45, 50, 45, 20])
+        sleep(SLEEP_TIME)
+        ant.set([45, 50, 45, 20, 45, 0, 45, 0])
+        sleep(SLEEP_TIME)
+        ant.set([45, 50, 30, 20, 45, 0, 45, 0])
+        sleep(SLEEP_TIME)
+        ant.set([45, 50, 30, -50, 45, 0, 45, 0])
+        sleep(SLEEP_TIME)
 
-        break
+
+def main():
+
+    # Allow user to specify a non-default com port
+    parser = OptionParser()
+    parser.add_option('-p', '--port', dest='port',
+                      help='com port, metavar="FILE',
+                      default='/dev/ttyACM0')
+    (opts, _) = parser.parse_args()
+
+    ant = RealAnt(opts.port)
+
+    ant.connect()
+    
+    #stand(ant)
+    crawl(ant)
+    ant.disconnect()
+
+
+if __name__ == "__main__":
+    main()
+             
