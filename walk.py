@@ -6,10 +6,7 @@ from realant import RealAnt
 import time
 from optparse import OptionParser
 
-SLEEP_TIME = 0.4
-
-
-def stand(ant):
+def stand(ant, sleep_time):
 
     angles = [
             [45, None, 45, None, 45, None, 45, None],
@@ -29,12 +26,12 @@ def stand(ant):
 
     for angle in angles:
         ant.set(angle)
-        time.sleep(SLEEP_TIME)
+        time.sleep(sleep_time)
 
 
-def step(ant, maxtime):
+def step(ant, sleep_time, max_time):
     '''
-    Returns total time taken on this step, rounded to SLEEP_TIME
+    Returns total time taken on this step, rounded to sleep_time
     '''
 
     angles = [
@@ -56,11 +53,11 @@ def step(ant, maxtime):
 
     for (count, angle) in enumerate(angles):
         ant.set(angle)
-        time.sleep(SLEEP_TIME)
-        if count*SLEEP_TIME >= maxtime:
+        time.sleep(sleep_time)
+        if count*sleep_time >= max_time:
             break
 
-    return SLEEP_TIME * len(angles)
+    return sleep_time * len(angles)
 
 
 def main():
@@ -72,6 +69,8 @@ def main():
                       default='/dev/ttyACM0')
     parser.add_option('-t', '--time', dest='time', help='run time',
                       type='float', default=5)
+    parser.add_option('-s', '--sleep', dest='sleep', help='sleep time',
+                      type='float', default=0.4)
 
     (opts, _) = parser.parse_args()
 
@@ -79,18 +78,18 @@ def main():
 
     ant.connect()
 
-    stand(ant)
+    stand(ant, opts.sleep)
 
     start = time.time()
 
-    timeleft = opts.time
+    time_left = opts.time
 
     while True:
 
         try:
-            timeleft -= step(ant, timeleft)
+            time_left -= step(ant, opts.sleep, time_left)
 
-            if timeleft <= 0:
+            if time_left <= 0:
                 break
 
         except KeyboardInterrupt:
