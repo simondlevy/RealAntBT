@@ -1,13 +1,13 @@
 #!/usr/bin/python3
 
 
-import numpy as np
 from realant import RealAnt
 
 from time import sleep
 from optparse import OptionParser
 
 SLEEP_TIME = 0.4
+
 
 def stand(ant):
 
@@ -80,6 +80,7 @@ def walk(ant):
         except KeyboardInterrupt:
             break
 
+
 def main():
 
     # Allow user to specify a non-default com port
@@ -92,11 +93,10 @@ def main():
     ant = RealAnt(opts.port)
 
     ant.connect()
-    
+
     walk(ant)
     ant.disconnect()
 
 
 if __name__ == "__main__":
     main()
-             
