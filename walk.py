@@ -70,7 +70,7 @@ def step(ant):
     sleep(SLEEP_TIME)
 
 
-def crawl(ant):
+def walk(ant):
 
     while True:
 
@@ -93,8 +93,7 @@ def main():
 
     ant.connect()
     
-    #stand(ant)
-    crawl(ant)
+    walk(ant)
     ant.disconnect()
 
 
