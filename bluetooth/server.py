@@ -33,7 +33,8 @@ while True:
 
                 if data:
 
-                    print(ord(data)-90)
+                    # print(ord(data)-90)
+                    print(data)
 
             except ConnectionResetError:
                 print('Client disconnected')
