@@ -24,5 +24,5 @@ with socket.socket(socket.AF_BLUETOOTH,
         angle += 1
 
         if angle > 90:
-            angle = 0
+            angle = -90 
 
