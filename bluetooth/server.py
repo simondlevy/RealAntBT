@@ -28,10 +28,12 @@ while True:
         while True:
 
             try:
+
                 data = client.recv(MSGSIZE)
 
                 if data:
-                    print(data)
+
+                    print(ord(data))
 
             except ConnectionResetError:
                 print('Client disconnected')
