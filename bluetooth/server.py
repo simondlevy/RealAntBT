@@ -29,6 +29,7 @@ while True:
 
             try:
                 data = client.recv(MSGSIZE)
+
                 if data:
                     print(data)
 
