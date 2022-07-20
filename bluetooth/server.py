@@ -33,8 +33,10 @@ while True:
 
                 if data:
 
-                    # print(ord(data)-90)
-                    print(data)
+                    #print([d for d in data], end=',')
+                    #print()
+
+                    print([int(d)-90 for d in data])
 
             except ConnectionResetError:
                 print('Client disconnected')
