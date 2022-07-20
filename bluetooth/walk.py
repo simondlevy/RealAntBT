@@ -4,9 +4,9 @@
 import time
 from optparse import OptionParser
 
-def stand(client, sleep_time):
+def stand(conn, sleep_time):
 
-    angles = [
+    behavior = [
             [45, None, 45, None, 45, None, 45, None],
             [30, None, 45, None, 45, None, 45, None],
             [30, 50, 45, None, 45, None, 45, None],
@@ -22,17 +22,19 @@ def stand(client, sleep_time):
             [45, 50, 45, -50, 45, 0, 45, 0]
             ]
 
-    for angle in angles:
-        ant.set(angle)
+    for angles in behavior:
+        
+        # XXX Send angles over conn
+
         time.sleep(sleep_time)
 
 
-def step(ant, sleep_time, max_time):
+def step(conn, sleep_time, max_time):
     '''
     Returns total time taken on this step, rounded to sleep_time
     '''
 
-    angles = [
+    behavior = [
             [45, 50, 45, -50, 45, 0, 45, 0],
             [30, 50, 45, -50, 45, 0, 45, 0],
             [30, -20, 45, -50, 45, 0, 45, 0],
@@ -49,9 +51,12 @@ def step(ant, sleep_time, max_time):
             [45, 50, 30, -50, 45, 0, 45, 0]
             ]
 
-    for (count, angle) in enumerate(angles):
-        ant.set(angle)
+    for (count, angles) in enumerate(behavior):
+
+        # XXX send angles over conn
+
         time.sleep(sleep_time)
+
         if count*sleep_time >= max_time:
             break
 
@@ -61,6 +66,7 @@ def step(ant, sleep_time, max_time):
 def main():
 
     # Allow user to specify a non-default com port and runtime
+    # XXX also allow specifying server address
     parser = OptionParser()
     parser.add_option('-p', '--port', dest='port',
                       help='com port, metavar="FILE',
@@ -75,6 +81,8 @@ def main():
     start = time.time()
 
     time_left = opts.time
+
+    # XXX open connection to server
 
     while True:
 
