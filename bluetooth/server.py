@@ -4,7 +4,7 @@ import socket
 import os
 
 ADDRESS = 'B8:27:EB:75:E6:45'
-PORT    = 1
+PORT = 1
 MSGSIZE = 1024
 
 # Enable bluetooth
@@ -18,7 +18,7 @@ while True:
 
         s.bind((ADDRESS, PORT))
 
-        s.listen(1) # support only one client
+        s.listen(1)  # support only one client
 
         print('Waiting for connection...')
         client, address = s.accept()
@@ -32,9 +32,6 @@ while True:
                 data = client.recv(MSGSIZE)
 
                 if data:
-
-                    #print([d for d in data], end=',')
-                    #print()
 
                     print([int(d)-90 for d in data])
 
