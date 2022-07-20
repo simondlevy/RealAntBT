@@ -1,8 +1,13 @@
 #!/usr/bin/python3
 
 import socket
+import os
+
+# Enable bluetooth
+os.system('sudo hciconfig hci0 piscan')
 
 server_address = 'B8:27:EB:75:E6:45'
+
 server_port = 1
 backlog = 1
 size = 1024
