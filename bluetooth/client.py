@@ -13,16 +13,9 @@ with socket.socket(socket.AF_BLUETOOTH,
 
     c.connect((server_address, server_port))
 
-    angle = -90
-
     while True:
 
-        # c.send(b'Move, ant!')
-        #c.send(str(count).encode('utf8'))
-        c.send(bytearray([angle+90]))
+        angles = [int(v) for v in np.random.random(8) * 180 - 90]
 
-        angle += 1
-
-        if angle > 90:
-            angle = -90 
-
+        # We add 90 because we can't encode negative values
+        c.send(bytearray([a+90 for a in angles]))
