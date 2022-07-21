@@ -13,8 +13,6 @@ import socket
 import time
 from optparse import OptionParser
 
-from realant import RealAnt
-
 SERVER_ADDRESS = 'B8:27:EB:75:E6:45'
 
 SERVER_PORT = 1
