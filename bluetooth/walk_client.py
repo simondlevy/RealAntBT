@@ -18,7 +18,8 @@ SERVER_ADDRESS = 'B8:27:EB:75:E6:45'
 SERVER_PORT = 1
 
 # Out-of-bound value means unspecified angle
-NO_ANGLE = 99 
+NO_ANGLE = 99
+
 
 def stand(conn, sleep_time):
 
@@ -41,8 +42,9 @@ def stand(conn, sleep_time):
             ]
 
     for angles in behavior:
+        
 
-        conn.send(bytearray(angles))
+        conn.send(bytearray([a+90 for a in angles]))
         time.sleep(sleep_time)
 
 
@@ -111,7 +113,7 @@ def main():
 
         time_left = opts.time
 
-        # XXX open connection to server
+        stand(conn, opts.sleep)
 
         while True:
 
