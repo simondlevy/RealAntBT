@@ -21,6 +21,19 @@ SERVER_PORT = 1
 NO_ANGLE = 99
 
 
+def send(conn, angles, sleep_time):
+
+    try:
+        conn.send(bytearray([a+90 for a in angles]))
+        time.sleep(sleep_time)
+
+    except ConnectionResetError:
+        print('Server disconnected')
+        exit(0)
+
+    except KeyboardInterrupt:
+        exit(0)
+
 def stand(conn, sleep_time):
 
     none = NO_ANGLE
@@ -42,10 +55,8 @@ def stand(conn, sleep_time):
             ]
 
     for angles in behavior:
-        
 
-        conn.send(bytearray([a+90 for a in angles]))
-        time.sleep(sleep_time)
+        send(conn, angles, sleep_time)
 
 
 def step(conn, sleep_time, max_time):
@@ -72,10 +83,7 @@ def step(conn, sleep_time, max_time):
 
     for (count, angles) in enumerate(behavior):
 
-        # XXX send angles over conn
-        conn.send(bytearray([a+90 for a in angles]))
-
-        time.sleep(sleep_time)
+        send(conn, angles, sleep_time)
 
         if count*sleep_time >= max_time:
             break
