@@ -7,10 +7,22 @@ ADDRESS = 'B8:27:EB:75:E6:45'
 PORT = 1
 MSGSIZE = 1024
 
-# Enable bluetooth
-os.system('sudo hciconfig hci0 piscan')
 
-while True:
+def serve_connection(client):
+
+    try:
+
+        data = client.recv(MSGSIZE)
+
+        if data:
+
+            print([int(d)-90 for d in data])
+
+    except ConnectionResetError:
+        print('Client disconnected')
+
+
+def accept_connections():
 
     with socket.socket(socket.AF_BLUETOOTH,
                        socket.SOCK_STREAM,
@@ -28,16 +40,24 @@ while True:
         while True:
 
             try:
-
-                data = client.recv(MSGSIZE)
-
-                if data:
-
-                    print([int(d)-90 for d in data])
-
-            except ConnectionResetError:
-                print('Client disconnected')
-                break
+                serve_connection(client)
 
             except KeyboardInterrupt:
                 break
+
+
+def main():
+
+    # Enable bluetooth
+    os.system('sudo hciconfig hci0 piscan')
+
+    while True:
+
+        try:
+            accept_connections()
+
+        except KeyboardInterrupt:
+            break
+
+
+main()
