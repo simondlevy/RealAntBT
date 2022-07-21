@@ -1,8 +1,15 @@
 #!/usr/bin/python3
 
+import socket
+import numpy as np
 
 import time
 from optparse import OptionParser
+
+server_address = 'B8:27:EB:75:E6:45'
+
+server_port = 1
+
 
 def stand(conn, sleep_time):
 
@@ -25,7 +32,10 @@ def stand(conn, sleep_time):
     for angles in behavior:
         
         # XXX Send angles over conn
-
+        for a in angles:
+            if a != None:
+                a += 90
+        conn.send(bytearray(angles))
         time.sleep(sleep_time)
 
 
@@ -54,6 +64,7 @@ def step(conn, sleep_time, max_time):
     for (count, angles) in enumerate(behavior):
 
         # XXX send angles over conn
+        conn.send(bytearray([a+90 for a in angles]))
 
         time.sleep(sleep_time)
 
@@ -68,6 +79,11 @@ def main():
     # Allow user to specify a non-default com port and runtime
     # XXX also allow specifying server address
     parser = OptionParser()
+
+    parser.add_option('-a', '--server_address', dest='server_address',
+                      help='server address', type='str',
+                      default='B8:27:EB:75:E6:45')
+
     parser.add_option('-p', '--port', dest='port',
                       help='com port, metavar="FILE',
                       default='/dev/ttyACM0')
@@ -78,22 +94,29 @@ def main():
 
     (opts, _) = parser.parse_args()
 
-    start = time.time()
 
-    time_left = opts.time
+    with socket.socket(socket.AF_BLUETOOTH,
+                       socket.SOCK_STREAM,
+                       socket.BTPROTO_RFCOMM) as conn:
 
-    # XXX open connection to server
+        conn.connect((server_address, server_port))
 
-    while True:
+        start = time.time()
 
-        try:
-            time_left -= step(ant, opts.sleep, time_left)
+        time_left = opts.time
 
-            if time_left <= 0:
+        # XXX open connection to server
+
+        while True:
+
+            try:
+                time_left -= step(conn, opts.sleep, time_left)
+
+                if time_left <= 0:
+                    break
+
+            except KeyboardInterrupt:
                 break
-
-        except KeyboardInterrupt:
-            break
 
     print(time.time()-start)
 
