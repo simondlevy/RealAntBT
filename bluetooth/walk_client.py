@@ -115,7 +115,12 @@ def main():
                        socket.SOCK_STREAM,
                        socket.BTPROTO_RFCOMM) as conn:
 
-        conn.connect((SERVER_ADDRESS, SERVER_PORT))
+        try:
+            conn.connect((SERVER_ADDRESS, SERVER_PORT))
+
+        except ConnectionRefusedError:
+            print('Cannot connect to server.  Is it running?')
+            exit(0)
 
         start = time.time()
 
