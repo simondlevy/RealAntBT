@@ -19,10 +19,12 @@ SERVER_ADDRESS = 'B8:27:EB:75:E6:45'
 
 SERVER_PORT = 1
 
+# Out-of-bound value means unspecified angle
+NO_ANGLE = 99 
 
 def stand(conn, sleep_time):
 
-    none = RealAnt.NO_ANGLE
+    none = NO_ANGLE
 
     behavior = [
             [45, none, 45, none, 45, none, 45, none],

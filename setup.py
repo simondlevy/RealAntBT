@@ -13,7 +13,7 @@ from setuptools import setup
 setup(
     name='realant',
     version='0.1',
-    install_requires=['dynamixel-ax12'],
+    install_requires=['dynamixel-ax12'], # Not required for bluetooth client
     description='Python library for RealAnt',
     packages=['realant'],
     author='Matt Stock, Simon D. Levy',

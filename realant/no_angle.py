@@ -8,7 +8,11 @@ MIT License
 
 from ax12 import Ax12
 
+
 class RealAnt:
+
+    # Out-of-bounds angle means no angle
+    NO_ANGLE = 99
 
     def __init__(self, devicename):
 
@@ -16,7 +20,6 @@ class RealAnt:
 
         self.servos = [None]*8
 
-        self.NO_ANGLE = 99  # out-of-bound value
         self.MAX_ANGLE = 90
         self.SCALE_A = -3.36
         self.SCALE_B = 512
