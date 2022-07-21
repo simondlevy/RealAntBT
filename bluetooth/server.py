@@ -26,7 +26,10 @@ def serve_connection(client):
 
         if data:
 
-            print([int(d)-90 for d in data])
+            # Convert bytes into angles; then convert out-of-bounds to None
+            angles = [a if abs(a) <= 90 else None
+                      for a in [int(d)-90 for d in data]]
+            print(angles)
 
     except ConnectionResetError:
         print('Client disconnected')
