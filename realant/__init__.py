@@ -1,7 +1,18 @@
+'''
+RealAnt class
+
+Copyright (c) 2022 Matt Stock, Simon D. Levy
+
+MIT License
+'''
+
 from ax12 import Ax12
 
 
 class RealAnt:
+
+    # Out-of-bounds angle means no angle
+    NO_ANGLE = 99
 
     def __init__(self, devicename):
 

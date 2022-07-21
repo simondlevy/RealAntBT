@@ -1,40 +1,47 @@
 #!/usr/bin/python3
 
-import socket
-import numpy as np
+'''
+Client program to send walking commands to the RealAnt
+over a Bluetooth socket
 
+Copyright (c) 2022 Matt Stock, Simon D. Levy
+
+MIT License
+'''
+
+import socket
 import time
 from optparse import OptionParser
 
-server_address = 'B8:27:EB:75:E6:45'
+from realant import RealAnt
 
-server_port = 1
+SERVER_ADDRESS = 'B8:27:EB:75:E6:45'
+
+SERVER_PORT = 1
 
 
 def stand(conn, sleep_time):
 
+    none = RealAnt.NO_ANGLE
+
     behavior = [
-            [45, None, 45, None, 45, None, 45, None],
-            [30, None, 45, None, 45, None, 45, None],
-            [30, 50, 45, None, 45, None, 45, None],
-            [45, 50, 45, None, 45, None, 45, None],
-            [45, 50, 30, None, 45, None, 45, None],
-            [45, 50, 30, -50, 45, None, 45, None],
-            [45, 50, 45, -50, 45, None, 45, None],
-            [45, 50, 45, -50, 30, None, 45, None],
-            [45, 50, 45, -50, 30, 0, 45, None],
-            [45, 50, 45, -50, 45, 0, 45, None],
-            [45, 50, 45, -50, 45, 0, 30, None],
+            [45, none, 45, none, 45, none, 45, none],
+            [30, none, 45, none, 45, none, 45, none],
+            [30, 50, 45, none, 45, none, 45, none],
+            [45, 50, 45, none, 45, none, 45, none],
+            [45, 50, 30, none, 45, none, 45, none],
+            [45, 50, 30, -50, 45, none, 45, none],
+            [45, 50, 45, -50, 45, none, 45, none],
+            [45, 50, 45, -50, 30, none, 45, none],
+            [45, 50, 45, -50, 30, 0, 45, none],
+            [45, 50, 45, -50, 45, 0, 45, none],
+            [45, 50, 45, -50, 45, 0, 30, none],
             [45, 50, 45, -50, 45, 0, 30, 0],
             [45, 50, 45, -50, 45, 0, 45, 0]
             ]
 
     for angles in behavior:
-        
-        # XXX Send angles over conn
-        for a in angles:
-            if a != None:
-                a += 90
+
         conn.send(bytearray(angles))
         time.sleep(sleep_time)
 
@@ -80,7 +87,7 @@ def main():
     # XXX also allow specifying server address
     parser = OptionParser()
 
-    parser.add_option('-a', '--server_address', dest='server_address',
+    parser.add_option('-a', '--SERVER_ADDRESS', dest='SERVER_ADDRESS',
                       help='server address', type='str',
                       default='B8:27:EB:75:E6:45')
 
@@ -94,12 +101,11 @@ def main():
 
     (opts, _) = parser.parse_args()
 
-
     with socket.socket(socket.AF_BLUETOOTH,
                        socket.SOCK_STREAM,
                        socket.BTPROTO_RFCOMM) as conn:
 
-        conn.connect((server_address, server_port))
+        conn.connect((SERVER_ADDRESS, SERVER_PORT))
 
         start = time.time()
 

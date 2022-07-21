@@ -1,5 +1,15 @@
 #!/usr/bin/python3
 
+'''
+Server program to send accepts commands for the RealAnt
+over a Bluetooth socket
+
+Copyright (c) 2022 Matt Stock, Simon D. Levy
+
+MIT License
+'''
+
+
 import socket
 import os
 

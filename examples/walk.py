@@ -1,5 +1,13 @@
 #!/usr/bin/python3
 
+'''
+Make the RealAnt walk
+
+Copyright (c) 2022 Matt Stock, Simon D. Levy
+
+MIT License
+'''
+
 
 from realant import RealAnt
 
