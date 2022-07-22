@@ -20,7 +20,7 @@ BLUETOOTH_PORT = 1
 MSGSIZE = 1024
 
 
-def serve_connection(client):
+def serve_connection(client, ant):
 
     try:
 
@@ -32,12 +32,13 @@ def serve_connection(client):
             angles = [a if abs(a) <= 90 else None
                       for a in [int(d)-90 for d in data]]
             print(angles)
+            ant.set(angles)
 
     except ConnectionResetError:
         print('Client disconnected')
 
 
-def accept_connections():
+def serve_connections(ant):
 
     with socket.socket(socket.AF_BLUETOOTH,
                        socket.SOCK_STREAM,
@@ -55,7 +56,7 @@ def accept_connections():
         while True:
 
             try:
-                serve_connection(client)
+                serve_connection(client, ant)
 
             except KeyboardInterrupt:
                 break
@@ -88,7 +89,7 @@ def main():
     while True:
 
         try:
-            accept_connections()
+            serve_connections(ant)
 
         except KeyboardInterrupt:
             break
