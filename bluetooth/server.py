@@ -9,10 +9,10 @@ Copyright (c) 2022 Matt Stock, Simon D. Levy
 MIT License
 '''
 
-from optparse import OptionParser
 from time import sleep
 import socket
 import os
+import argparse
 
 from realant import RealAnt
 
@@ -73,24 +73,23 @@ def serve_connections(ant):
 
 def main():
 
-    # Allow user to specify a non-default com port and runtime
-    parser = OptionParser()
-    parser.add_option('-p', '--commport', dest='commport',
-                      help='com port',
-                      default='/dev/ttyACM0')
-    parser.add_option('-d', '--delay', dest='delay',
-                      help='startup delay in seconds',
-                      type=float, default=0)
-    (opts, _) = parser.parse_args()
+    parser = argparse.ArgumentParser(
+            formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+
+    parser.add_argument('-p', '--commport', help='com port',
+                        default='/dev/ttyACM0')
+    parser.add_argument('-d', '--delay', help='startup delay in seconds',
+                        type=float, default=0)
+    args = parser.parse_args()
 
     # Wait a bit before starting
-    sleep(opts.delay)
+    sleep(args.delay)
 
     # Enable bluetooth
     os.system('sudo hciconfig hci0 piscan')
 
     # Start the RealAnt
-    ant = RealAnt(opts.commport)
+    ant = RealAnt(args.commport)
     ant.connect()
 
     # Loop forever, accepting new clients

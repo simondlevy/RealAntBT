@@ -114,7 +114,6 @@ def walk(conn, total_time):
 
 def main():
 
-    # Allow user to specify a non-default com port and runtime
     parser = argparse.ArgumentParser(
             formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
