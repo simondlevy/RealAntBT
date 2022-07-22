@@ -73,18 +73,21 @@ def serve_connections(ant):
 
 def main():
 
-    # Wait a bit before starting
-    sleep(5)
-
-    # Enable bluetooth
-    os.system('sudo hciconfig hci0 piscan')
-
     # Allow user to specify a non-default com port and runtime
     parser = OptionParser()
     parser.add_option('-p', '--commport', dest='commport',
                       help='com port',
                       default='/dev/ttyACM0')
+    parser.add_option('-d', '--delay', dest='delay',
+                      help='startup delay in seconds',
+                      type=float, default=0)
     (opts, _) = parser.parse_args()
+
+    # Wait a bit before starting
+    sleep(opts.delay)
+
+    # Enable bluetooth
+    os.system('sudo hciconfig hci0 piscan')
 
     # Start the RealAnt
     ant = RealAnt(opts.commport)
