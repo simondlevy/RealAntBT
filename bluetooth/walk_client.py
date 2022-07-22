@@ -34,6 +34,7 @@ def send(conn, angles, sleep_time):
     except KeyboardInterrupt:
         exit(0)
 
+
 def stand(conn, sleep_time):
 
     none = NO_ANGLE
@@ -91,6 +92,27 @@ def step(conn, sleep_time, max_time):
     return sleep_time * len(angles)
 
 
+def quit(conn, sleep_time):
+
+    send(conn, [NO_ANGLE]*8, sleep_time)
+
+
+def walk(conn, total_time, sleep_time):
+
+    time_left = total_time
+
+    while True:
+
+        try:
+            time_left -= step(conn, sleep_time, time_left)
+
+            if time_left <= 0:
+                break
+
+        except KeyboardInterrupt:
+            break
+
+
 def main():
 
     # Allow user to specify a non-default com port and runtime
@@ -122,24 +144,11 @@ def main():
             print('Cannot connect to server.  Is it running?')
             exit(0)
 
-        start = time.time()
-
-        time_left = opts.time
-
         stand(conn, opts.sleep)
 
-        while True:
+        walk(conn, opts.time, opts.sleep)
 
-            try:
-                time_left -= step(conn, opts.sleep, time_left)
-
-                if time_left <= 0:
-                    break
-
-            except KeyboardInterrupt:
-                break
-
-    print(time.time()-start)
+        quit(conn, opts.sleep)
 
 
 if __name__ == "__main__":
