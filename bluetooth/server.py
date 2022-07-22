@@ -10,6 +10,7 @@ MIT License
 '''
 
 from optparse import OptionParser
+from time import sleep
 import socket
 import os
 
@@ -74,6 +75,9 @@ def get_options():
 
 
 def main():
+
+    # Wait a bit before starting
+    sleep(5)
 
     # Enable bluetooth
     os.system('sudo hciconfig hci0 piscan')
