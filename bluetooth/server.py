@@ -21,7 +21,10 @@ BLUETOOTH_PORT = 1
 MSGSIZE = 1024
 
 
-def serve_connection(client, ant):
+def handle_message(client, ant):
+
+    # Client will send an all-None message to set this flag to False when done
+    more = True
 
     try:
 
@@ -33,10 +36,14 @@ def serve_connection(client, ant):
             angles = [a if abs(a) <= 90 else None
                       for a in [int(d)-90 for d in data]]
             print(angles)
+            if all(map(lambda a: a is None, angles)):
+                more = False
             ant.set(angles)
 
     except ConnectionResetError:
         print('Client disconnected')
+
+    return more
 
 
 def serve_connections(ant):
@@ -57,21 +64,11 @@ def serve_connections(ant):
         while True:
 
             try:
-                serve_connection(client, ant)
+                if not handle_message(client, ant):
+                    break
 
             except KeyboardInterrupt:
                 break
-
-
-def get_options():
-
-    # Allow user to specify a non-default com port and runtime
-    parser = OptionParser()
-    parser.add_option('-p', '--commport', dest='commport',
-                      help='com port',
-                      default='/dev/ttyACM0')
-    (opts, _) = parser.parse_args()
-    return opts
 
 
 def main():
@@ -82,8 +79,12 @@ def main():
     # Enable bluetooth
     os.system('sudo hciconfig hci0 piscan')
 
-    # Get command-line options
-    opts = get_options()
+    # Allow user to specify a non-default com port and runtime
+    parser = OptionParser()
+    parser.add_option('-p', '--commport', dest='commport',
+                      help='com port',
+                      default='/dev/ttyACM0')
+    (opts, _) = parser.parse_args()
 
     # Start the RealAnt
     ant = RealAnt(opts.commport)
