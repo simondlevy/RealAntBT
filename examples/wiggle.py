@@ -50,7 +50,7 @@ def main():
     # Allow user to specify a non-default com port
     parser = OptionParser()
     parser.add_option('-p', '--port', dest='port',
-                      help='com port, metavar="FILE',
+                      help='com port',
                       default='/dev/ttyACM0')
     (opts, _) = parser.parse_args()
 

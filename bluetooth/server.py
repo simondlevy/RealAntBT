@@ -9,12 +9,14 @@ Copyright (c) 2022 Matt Stock, Simon D. Levy
 MIT License
 '''
 
-
+from optparse import OptionParser
 import socket
 import os
 
-ADDRESS = 'B8:27:EB:75:E6:45'
-PORT = 1
+from realant import RealAnt
+
+BLUETOOTH_ADDRESS = 'B8:27:EB:75:E6:45'
+BLUETOOTH_PORT = 1
 MSGSIZE = 1024
 
 
@@ -41,7 +43,7 @@ def accept_connections():
                        socket.SOCK_STREAM,
                        socket.BTPROTO_RFCOMM) as s:
 
-        s.bind((ADDRESS, PORT))
+        s.bind((BLUETOOTH_ADDRESS, BLUETOOTH_PORT))
 
         s.listen(1)  # support only one client
 
@@ -59,11 +61,30 @@ def accept_connections():
                 break
 
 
+def get_options():
+
+    # Allow user to specify a non-default com port and runtime
+    parser = OptionParser()
+    parser.add_option('-p', '--commport', dest='commport',
+                      help='com port',
+                      default='/dev/ttyACM0')
+    (opts, _) = parser.parse_args()
+    return opts
+
+
 def main():
 
     # Enable bluetooth
     os.system('sudo hciconfig hci0 piscan')
 
+    # Get command-line options
+    opts = get_options()
+
+    # Start the RealAnt
+    ant = RealAnt(opts.commport)
+    ant.connect()
+
+    # Loop forever, accepting new clients
     while True:
 
         try:
