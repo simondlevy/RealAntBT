@@ -11,21 +11,20 @@ MIT License
 
 import socket
 import time
-from optparse import OptionParser
-
-SERVER_ADDRESS = 'B8:27:EB:75:E6:45'
-
-SERVER_PORT = 1
+import argparse
 
 # Out-of-bound value means unspecified angle
 NO_ANGLE = 99
 
+# XXX should optimize this
+SLEEP = 0.4
 
-def send(conn, angles, sleep_time):
+
+def send(conn, angles):
 
     try:
         conn.send(bytearray([a+90 for a in angles]))
-        time.sleep(sleep_time)
+        time.sleep(SLEEP)
 
     except ConnectionResetError:
         print('Server disconnected')
@@ -35,7 +34,7 @@ def send(conn, angles, sleep_time):
         exit(0)
 
 
-def stand(conn, sleep_time):
+def stand(conn):
 
     none = NO_ANGLE
 
@@ -57,12 +56,12 @@ def stand(conn, sleep_time):
 
     for angles in behavior:
 
-        send(conn, angles, sleep_time)
+        send(conn, angles)
 
 
-def step(conn, sleep_time, max_time):
+def step(conn, max_time):
     '''
-    Returns total time taken on this step, rounded to sleep_time
+    Returns total time taken on this step, rounded to SLEEP
     '''
 
     behavior = [
@@ -84,27 +83,27 @@ def step(conn, sleep_time, max_time):
 
     for (count, angles) in enumerate(behavior):
 
-        send(conn, angles, sleep_time)
+        send(conn, angles)
 
-        if count*sleep_time >= max_time:
+        if count*SLEEP >= max_time:
             break
 
-    return sleep_time * len(angles)
+    return SLEEP * len(angles)
 
 
-def quit(conn, sleep_time):
+def quit(conn):
 
-    send(conn, [NO_ANGLE]*8, sleep_time)
+    send(conn, [NO_ANGLE]*8)
 
 
-def walk(conn, total_time, sleep_time):
+def walk(conn, total_time):
 
     time_left = total_time
 
     while True:
 
         try:
-            time_left -= step(conn, sleep_time, time_left)
+            time_left -= step(conn, time_left)
 
             if time_left <= 0:
                 break
@@ -116,39 +115,36 @@ def walk(conn, total_time, sleep_time):
 def main():
 
     # Allow user to specify a non-default com port and runtime
-    # XXX also allow specifying server address
-    parser = OptionParser()
+    parser = argparse.ArgumentParser(
+            formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
-    parser.add_option('-a', '--SERVER_ADDRESS', dest='SERVER_ADDRESS',
-                      help='server address', type='str',
-                      default='B8:27:EB:75:E6:45')
+    parser.add_argument('-s', '--server', help='server address',
+                        default='B8:27:EB:75:E6:45')
 
-    parser.add_option('-p', '--port', dest='port',
-                      help='com port, metavar="FILE',
-                      default='/dev/ttyACM0')
-    parser.add_option('-t', '--time', dest='time', help='run time',
-                      type='float', default=5)
-    parser.add_option('-s', '--sleep', dest='sleep', help='sleep time',
-                      type='float', default=0.4)
+    parser.add_argument('-p', '--port', help='server port',
+                        type=int, default=1)
 
-    (opts, _) = parser.parse_args()
+    parser.add_argument('-t', '--time', help='running time',
+                        type=float, default=5.0)
+
+    args = parser.parse_args()
 
     with socket.socket(socket.AF_BLUETOOTH,
                        socket.SOCK_STREAM,
                        socket.BTPROTO_RFCOMM) as conn:
 
         try:
-            conn.connect((SERVER_ADDRESS, SERVER_PORT))
+            conn.connect((args.server, args.port))
 
         except ConnectionRefusedError:
             print('Cannot connect to server.  Is it running?')
             exit(0)
 
-        stand(conn, opts.sleep)
+        stand(conn)
 
-        walk(conn, opts.time, opts.sleep)
+        walk(conn, args.time)
 
-        quit(conn, opts.sleep)
+        quit(conn)
 
 
 if __name__ == "__main__":
