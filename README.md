@@ -49,24 +49,24 @@ and assembly images below should be sufficient to set up your RealAnt:
 Battery connector (lower left) supplies power to volate regulator (top left), which supplies
 5V to Raspberry Pi (top right).
 
-<br><br><br><br>
+<br><br><br>
 
 <img src="images/closeup2.jpg" width=500>
 
 Details of Raspberry Pi power connection (see
 [pinout](https://www.etechnophiles.com/wp-content/uploads/2021/01/R-Pi-4-GPIO-Pinout-1-768x572.jpg))
 
-<br><br><br><br>
+<br><br><br>
 
 <img src="images/closeup3a.jpg" width=500>
 
 Details of six-port power hub.  Note the single ground wire for the Raspberry Pi.
 
-<br><br><br><br>
+<br><br><br>
 
 <img src="images/closeup4.jpg" width=500>
 
-<br><br><br><br>
+<br><br><br>
 
 <img src="images/closeup5.jpg" width=500>
 
