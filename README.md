@@ -47,7 +47,7 @@ and assembly images below should be sufficient to set up your RealAnt:
 <img src="images/closeup1a.jpg" width=500>
 
 Battery connector (lower left) supplies power to volate regulator (top
-left),<br>which supplies 5V to Raspberry Pi (top right).
+left),<br>which supplies 5V to Raspberry Pi GPIO pins (top right).
 
 <br><br><br>
 
