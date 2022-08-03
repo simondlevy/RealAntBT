@@ -9,10 +9,10 @@ As fans of the new
 reinforcement learning platform, we were looking for a way to control the RealAnt wirelessly.  Thanks to the built-in
 Bluetooth chip on the Raspberry Pi, this proved to be straightforward.  
 
-## Parts and assembly
+## Parts
 
 Assuming you have some experience with soldering, heat-shrink tubing, and battery-safety issues, the parts list
-and images below should be sufficient to set up your RealAnt:
+and assembly images below should be sufficient to set up your RealAnt:
 
 1. [RealAnt](https://github.com/OteRobotics/realant#get-your-realant)
 
@@ -26,7 +26,7 @@ and images below should be sufficient to set up your RealAnt:
 
 5. [11.1V Lipo battery with JST connector](https://www.rcplanet.com/protek-rc-3s-high-power-lipo-20c-battery-pack-11.1v-1100mah-blade-sr-ptk-5179/p177000)
 
-6. [JST female connectors](https://www.amazon.com/gp/product/B06XRBKSY2)
+6. [JST female battery connectors](https://www.amazon.com/gp/product/B06XRBKSY2)
 
 7. [Dynamixel three-pin cables](https://www.trossenrobotics.com/p/200mm-3-pin-dynamixel-compatible-cables-10-pack)
 
@@ -40,7 +40,11 @@ and images below should be sufficient to set up your RealAnt:
 
 12. [Raspberry Pi case exposing pin headers](https://www.thingiverse.com/thing:559858)
 
+## Assembly
+
 <img src="images/closeup1.jpg" width=500>
+
+Battery connector (lower-right) supplies power to volate regulator (upper-right)
 
 <img src="images/closeup2.jpg" width=500>
 
