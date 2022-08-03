@@ -105,7 +105,7 @@ If you haven't already modified your <b>/etc/rc.local</b>, you can simply replac
 the one [provided](https://github.com/simondlevy/RealAntBT/blob/master/rc.local) in this repository.
 
 If you've assembled and installed everything correctly, you should be able to shutdown your Raspberry
-Pi, power it up with the battery, wait a few seconds for it to power up, and run the 
+Pi, power it up with the battery, wait a few seconds for it to boot up, and run the 
 [bluetooth/walk_client.py](https://github.com/simondlevy/RealAntBT/blob/master/bluetooth/walk_client.py)
 script on your desktop or laptop computer to make the RealAnt walk for five seconds.
 
