@@ -38,17 +38,25 @@ and assembly images below should be sufficient to set up your RealAnt:
 
 11. [Velcro strips](https://www.amazon.com/Adhesive-Industrial-Strength-Strong-Strips/dp/B097TWHBTG/)
 
-12. [Raspberry Pi case exposing pin headers](https://www.thingiverse.com/thing:559858)
+12. [Small cable ties](https://www.amazon.com/gp/product/B0002GX1XA/)
+
+13. [Raspberry Pi case exposing pin headers](https://www.thingiverse.com/thing:559858)
 
 ## Assembly
 
 <img src="images/closeup1.jpg" width=500>
 
-Battery connector (lower-right) supplies power to volate regulator (upper-right)
+Battery connector (lower-right) supplies power to volate regulator (middle-left), which supplies
+5V to Raspberry Pi (upper-left)
 
 <br><br><br><br>
 
 <img src="images/closeup2.jpg" width=500>
+
+Details of Raspberry Pi power connection (see
+[pinout](https://www.etechnophiles.com/wp-content/uploads/2021/01/R-Pi-4-GPIO-Pinout-1-768x572.jpg))
+
+<br><br><br><br>
 
 <img src="images/closeup3.jpg" width=500>
 
