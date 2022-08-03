@@ -1,6 +1,6 @@
 # Real Ant BT
 
-<a href="https://www.youtube.com/watch?v=fSu-80Ofek4"><img src="images/realanmobemDcX9ewt.jpg"</a>
+<a href="https://www.youtube.com/watch?v=fSu-80Ofek4"><img src="images/realant.jpg"</a>
 
 
 Resources for working with the Real Ant project minus the actual reinforcement
