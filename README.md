@@ -12,7 +12,7 @@ Bluetooth chip on the Raspberry Pi, this proved to be straightforward.
 ## Parts and assembly
 
 Assuming you have some experience with soldering, heat-shrink tubing, and battery-safety issues, the parts list
-below and images below should be sufficient to set up your RealAnt:
+and images below should be sufficient to set up your RealAnt:
 
 1. [RealAnt](https://github.com/OteRobotics/realant#get-your-realant)
 
@@ -34,7 +34,11 @@ below and images below should be sufficient to set up your RealAnt:
 
 9. [Heat-shrink tubing](https://www.amazon.com/gp/product/B00Q7V49RQ)
 
-10. [Raspberry Pi case exposing pin headers](https://www.thingiverse.com/thing:559858)
+10. [Velcro strips](https://www.amazon.com/Adhesive-Industrial-Strength-Strong-Strips/dp/B097TWHBTG/)
+
+11. [Raspberry Pi case exposing pin headers](https://www.thingiverse.com/thing:559858)
+
+## Software
 
 ## Future work
 
