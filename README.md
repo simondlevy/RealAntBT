@@ -38,6 +38,16 @@ and images below should be sufficient to set up your RealAnt:
 
 11. [Raspberry Pi case exposing pin headers](https://www.thingiverse.com/thing:559858)
 
+<img src="images/closeup1.jpg">
+
+<img src="images/closeup2.jpg">
+
+<img src="images/closeup3.jpg">
+
+<img src="images/closeup4.jpg">
+
+<img src="images/closeup5.jpg">
+
 ## Software
 
 ## Future work
