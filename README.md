@@ -106,13 +106,14 @@ the one [provided](https://github.com/simondlevy/RealAntBT/blob/master/rc.local)
 
 Finally, you'll want to run the command ```hcitool dev``` on your Raspberry Pi to determine the 
 MAC address of its Bluetooth chip.  Edit the
-[bluetooth/server.py](https://github.com/simondlevy/RealAntBT/blob/master/bluetooth/server.py#L19)
+[bluetooth/server.py](https://github.com/simondlevy/RealAntBT/blob/master/bluetooth/server.py#L83)
 file to correspond to this address.
 
 ## Software: Host computer
 
 After cloning this repository (RealAntBT) onto your host computer, you should only need to edit the
-
+[bluetooth/walk_client.py](https://github.com/simondlevy/RealAntBT/blob/master/bluetooth/walk_client.py#L121)
+file to correspond to the same Bluetooth address you used on the Raspberry Pi.
 
 If you've assembled and installed everything correctly, you should be able to shutdown your Raspberry
 Pi, power it up with the battery, wait a few seconds for it to boot up, and run the 
