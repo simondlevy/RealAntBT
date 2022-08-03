@@ -95,6 +95,15 @@ cd RealAntBT
 sudo pip3 install -e .
 ```
 
+To make sure that your RaspberryPi starts the running the Bluetooth server program on
+startup, you'll want to insert the following line into its <b>/etc/rc.local</b> file:
+```
+/usr/bin/python /home/pi/RealAntBT/bluetooth/server.py --delay 5 &
+```
+
+If you haven't already modified your <b>/etc/rc.local</b>, you can simply replace it with
+the one [provided](https://github.com/simondlevy/RealAntBT/blob/master/rc.local) in this repository.
+
 ## Future work
 
 Currently our Bluetooth connection is one-way, sending command to the RealAnt but not retrieving any
