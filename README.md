@@ -123,7 +123,7 @@ Pi, power it up with the battery, wait a few seconds for it to boot up, and run 
 ## Future work
 
 Currently our Bluetooth connection is one-way, sending command to the RealAnt but not retrieving any
-telemetry data (postion, orientation, etc.)  In future work we plan to add this capability. 
+telemetry data (position, orientation, etc.)  In future work we plan to add this capability. 
 
 As we have not measured the current draw on our hardware setup, it would also be useful to have
 the Raspberry Pi report the current battery voltage, so a fresh battery can be swapped in before
