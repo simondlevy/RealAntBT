@@ -15,3 +15,10 @@ you need to do to set this up.
 Currently our Bluetooth connection is one-way, sending command to the RealAnt but not retrieving any
 telemetry data (postion, orientation, etc.)  In future work we plan to add this capability.
 
+## Credits
+
+A big thanks to the &ldquo;Thing 1&rdquo; team from the spring 2022 W&L
+[CSCI 316](https://simondlevy.academic.wlu.edu/home/csci-316-advanced-topics-in-robotics/)
+course: [Yoseph Tamene](https://github.com/tameney22), Dan Nguyen, and Haochen Tu.
+
+
