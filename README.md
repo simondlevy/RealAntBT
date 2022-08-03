@@ -46,6 +46,8 @@ and assembly images below should be sufficient to set up your RealAnt:
 
 Battery connector (lower-right) supplies power to volate regulator (upper-right)
 
+<br><br><br><br>
+
 <img src="images/closeup2.jpg" width=500>
 
 <img src="images/closeup3.jpg" width=500>
