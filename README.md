@@ -58,9 +58,15 @@ Details of Raspberry Pi power connection (see
 
 <br><br><br><br>
 
-<img src="images/closeup3.jpg" width=500>
+<img src="images/closeup3a.jpg" width=500>
+
+Details of six-port power hub.  Note the single ground wire for the Raspberry Pi.
+
+<br><br><br><br>
 
 <img src="images/closeup4.jpg" width=500>
+
+<br><br><br><br>
 
 <img src="images/closeup5.jpg" width=500>
 
