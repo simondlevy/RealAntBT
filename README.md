@@ -117,7 +117,7 @@ laptop), you should only need to edit the
 file to correspond to the same Bluetooth address you used on the Raspberry Pi.
 
 If you've assembled and installed everything correctly, you should be able to shutdown your Raspberry
-Pi, power it up with the battery, wait a few seconds for it to boot up, and run the 
+Pi, power it up with the battery, wait 30 seconds or so for it to boot up, and run the 
 <b>bluetooth/walk_client.py</b> script on your host computer to make the RealAnt walk for five seconds.
 
 ## Future work
