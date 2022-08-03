@@ -42,6 +42,9 @@ and assembly images below should be sufficient to set up your RealAnt:
 
 13. [Raspberry Pi case exposing pin headers](https://www.thingiverse.com/thing:559858)
 
+14. [Bluetooth adapter](https://www.amazon.com/D-Link-DBT-120-Wireless-Bluetooth-Adapter/dp/B00006B7DB) for
+your computer if it doesn't have one (most laptops do, and most desktops do not).
+
 ## Assembly
 
 <img src="images/closeup1a.jpg" width=500>
@@ -76,10 +79,15 @@ A shorter velcro strip on the battery
 
 ## Software
 
+
 ## Future work
 
 Currently our Bluetooth connection is one-way, sending command to the RealAnt but not retrieving any
-telemetry data (postion, orientation, etc.)  In future work we plan to add this capability.
+telemetry data (postion, orientation, etc.)  In future work we plan to add this capability. 
+
+As we have not measured the current draw on our hardware setup, it would also be useful to have
+the Raspberry Pi report the current battery voltage, so a fresh battery can be swapped in before
+the onboard battery runs down.
 
 ## Credits
 
