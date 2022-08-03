@@ -7,10 +7,12 @@
 As fans of the new
 <a href="https://www.inceptivemind.com/open-source-low-cost-realant-robot-learns-reinforcement-learning/16926/">RealAnt</a>
 reinforcement learning platform, we were looking for a way to control the RealAnt wirelessly.  Thanks to the built-in
-Bluetooth chip on the Raspberry Pi, this proved to be straightforward.  The steps below will walk you through what
-you need to do to set this up.
+Bluetooth chip on the Raspberry Pi, this proved to be straightforward.  
 
-## Parts List
+## Parts and assembly
+
+Assuming you have some experience with soldering, heat-shrink tubing, and battery-safety issues, the parts list
+below and images below should be sufficient to set up your RealAnt:
 
 1. [RealAnt](https://github.com/OteRobotics/realant#get-your-realant)
 
@@ -28,7 +30,11 @@ you need to do to set this up.
 
 7. [Dynamixel three-pin cables](https://www.trossenrobotics.com/p/200mm-3-pin-dynamixel-compatible-cables-10-pack)
 
-8. [Raspberry Pi case exposing pin headers](https://www.thingiverse.com/thing:559858)
+8. [Female jumper wires](https://www.adafruit.com/product/794)
+
+9. [Heat-shrink tubing](https://www.amazon.com/gp/product/B00Q7V49RQ)
+
+10. [Raspberry Pi case exposing pin headers](https://www.thingiverse.com/thing:559858)
 
 ## Future work
 
