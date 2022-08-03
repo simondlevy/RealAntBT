@@ -1,6 +1,7 @@
-# Real Ant
+# Real Ant BT
 
-![Assembled Ant](/images/realant.jpg)
+<a href="https://www.youtube.com/watch?v=fSu-80Ofek4"><img src="images/realanmobemDcX9ewt.jpg"</a>
+
 
 Resources for working with the Real Ant project minus the actual reinforcement
 learning. This repository consists of code that allows you to interact with any
