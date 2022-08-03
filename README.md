@@ -111,6 +111,9 @@ file to correspond to this address.
 
 ## Software: Host computer
 
+After cloning this repository (RealAntBT) onto your host computer, you should only need to edit the
+
+
 If you've assembled and installed everything correctly, you should be able to shutdown your Raspberry
 Pi, power it up with the battery, wait a few seconds for it to boot up, and run the 
 [bluetooth/walk_client.py](https://github.com/simondlevy/RealAntBT/blob/master/bluetooth/walk_client.py)
