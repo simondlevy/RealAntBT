@@ -91,6 +91,7 @@ cd dynamixel-ax12/
 sudo pip3 install -e .
 cd
 git clone https://github.com/simondlevy/RealAntBT
+cd RealAntBT
 sudo pip3 install -e .
 ```
 
