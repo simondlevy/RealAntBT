@@ -20,7 +20,7 @@ you need to do to set this up.
 
 3. [U2D2 USB adapter](https://www.robotis.us/u2d2/)  (The smaller USB adapter shown in the image above is no longer available.)
 
-4. [5V, 3A step-down voltage regulator](https://www.pololu.com/product/3782)
+4. [5V, 3.2A step-down voltage regulator](https://www.pololu.com/product/3782)
 
 5. [11.1V Lipo battery with JST connector](https://www.rcplanet.com/protek-rc-3s-high-power-lipo-20c-battery-pack-11.1v-1100mah-blade-sr-ptk-5179/p177000)
 
