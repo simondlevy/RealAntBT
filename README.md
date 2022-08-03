@@ -79,7 +79,20 @@ A shorter velcro strip on the battery
 
 ## Software
 
+Run the following commands on your Raspberry Pi:
 
+```
+git clone https://github.com/ROBOTIS-GIT/DynamixelSDK
+cd DynamixelSDK/python/
+sudo pip3 install -e .
+cd
+git clone https://github.com/simondlevy/dynamixel-ax12
+cd dynamixel-ax12/
+sudo pip3 install -e .
+cd
+git clone https://github.com/simondlevy/RealAntBT
+sudo pip3 install -e .
+```
 
 ## Future work
 
