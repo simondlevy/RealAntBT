@@ -104,6 +104,9 @@ startup, you'll want to insert the following line into its <b>/etc/rc.local</b> 
 If you haven't already modified your <b>/etc/rc.local</b>, you can simply replace it with
 the one [provided](https://github.com/simondlevy/RealAntBT/blob/master/rc.local) in this repository.
 
+Finally, you'll want to run the command ```hcitool dev``` on your Raspberry Pi to determine the 
+MAC address of its Bluetooth chip.
+
 If you've assembled and installed everything correctly, you should be able to shutdown your Raspberry
 Pi, power it up with the battery, wait a few seconds for it to boot up, and run the 
 [bluetooth/walk_client.py](https://github.com/simondlevy/RealAntBT/blob/master/bluetooth/walk_client.py)
