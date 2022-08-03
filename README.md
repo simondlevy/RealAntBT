@@ -67,5 +67,3 @@ your choice (in this case _Python_).
   E-Manual](https://emanual.robotis.com/docs/en/dxl/ax/ax-12a/): documentation
 about the physical servos, including information about the different values and
 their registers.
-
-![Ant ID Configuration](/images/front.jpg)
