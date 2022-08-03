@@ -10,6 +10,26 @@ reinforcement learning platform, we were looking for a way to control the RealAn
 Bluetooth chip on the Raspberry Pi, this proved to be straightforward.  The steps below will walk you through what
 you need to do to set this up.
 
+## Parts List
+
+1. [RealAnt](https://github.com/OteRobotics/realant#get-your-realant)
+
+2. [RaspberryPi](https://www.amazon.com/Raspberry-Model-2019-Quad-Bluetooth/dp/B07TC2BK1X)
+
+3. [Six-port power hub](https://www.trossenrobotics.com/6-port-ax-mx-power-hub)
+
+3. [U2D2 USB adapter](https://www.robotis.us/u2d2/).  (The smaller USB adapter shown in the image above is no longer available.)
+
+4. [5V, 3A step-down voltage regulator](https://www.pololu.com/product/3782)
+
+5. [11.1V Lipo battery with JST connector](https://www.rcplanet.com/protek-rc-3s-high-power-lipo-20c-battery-pack-11.1v-1100mah-blade-sr-ptk-5179/p177000)
+
+6. [JST female connectors](https://www.amazon.com/gp/product/B06XRBKSY2)
+
+7. [Dynamixel three-pin cables](https://www.trossenrobotics.com/p/200mm-3-pin-dynamixel-compatible-cables-10-pack)
+
+8. [Raspberry Pi case exposing pin headers](https://www.thingiverse.com/thing:559858)
+
 ## Future work
 
 Currently our Bluetooth connection is one-way, sending command to the RealAnt but not retrieving any
