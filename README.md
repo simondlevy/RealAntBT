@@ -18,7 +18,7 @@ you need to do to set this up.
 
 3. [Six-port power hub](https://www.trossenrobotics.com/6-port-ax-mx-power-hub)
 
-3. [U2D2 USB adapter](https://www.robotis.us/u2d2/).  (The smaller USB adapter shown in the image above is no longer available.)
+3. [U2D2 USB adapter](https://www.robotis.us/u2d2/)  (The smaller USB adapter shown in the image above is no longer available.)
 
 4. [5V, 3A step-down voltage regulator](https://www.pololu.com/product/3782)
 
