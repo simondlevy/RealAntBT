@@ -80,6 +80,7 @@ A shorter velcro strip on the battery
 ## Software
 
 
+
 ## Future work
 
 Currently our Bluetooth connection is one-way, sending command to the RealAnt but not retrieving any
