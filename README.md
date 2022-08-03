@@ -32,21 +32,23 @@ and images below should be sufficient to set up your RealAnt:
 
 8. [Female jumper wires](https://www.adafruit.com/product/794)
 
-9. [Heat-shrink tubing](https://www.amazon.com/gp/product/B00Q7V49RQ)
+9. [Heat-shrink tubing for wires](https://www.amazon.com/gp/product/B00Q7V49RQ)
 
-10. [Velcro strips](https://www.amazon.com/Adhesive-Industrial-Strength-Strong-Strips/dp/B097TWHBTG/)
+10. [Heat-shrink tubing for voltage regulator](https://www.amazon.com/dp/B075ZW5WXW)
 
-11. [Raspberry Pi case exposing pin headers](https://www.thingiverse.com/thing:559858)
+11. [Velcro strips](https://www.amazon.com/Adhesive-Industrial-Strength-Strong-Strips/dp/B097TWHBTG/)
 
-<img src="images/closeup1.jpg">
+12. [Raspberry Pi case exposing pin headers](https://www.thingiverse.com/thing:559858)
 
-<img src="images/closeup2.jpg">
+<img src="images/closeup1.jpg" width=500>
 
-<img src="images/closeup3.jpg">
+<img src="images/closeup2.jpg" width=500>
 
-<img src="images/closeup4.jpg">
+<img src="images/closeup3.jpg" width=500>
 
-<img src="images/closeup5.jpg">
+<img src="images/closeup4.jpg" width=500>
+
+<img src="images/closeup5.jpg" width=500>
 
 ## Software
 
