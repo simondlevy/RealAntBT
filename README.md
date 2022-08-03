@@ -77,7 +77,7 @@ A velcro strip helps keep the battery in place.
 
 A shorter velcro strip on the battery
 
-## Software
+## Software: Raspberry Pi
 
 Run the following commands on your Raspberry Pi:
 
@@ -105,7 +105,11 @@ If you haven't already modified your <b>/etc/rc.local</b>, you can simply replac
 the one [provided](https://github.com/simondlevy/RealAntBT/blob/master/rc.local) in this repository.
 
 Finally, you'll want to run the command ```hcitool dev``` on your Raspberry Pi to determine the 
-MAC address of its Bluetooth chip.
+MAC address of its Bluetooth chip.  Edit the
+[bluetooth/server.py](https://github.com/simondlevy/RealAntBT/blob/master/bluetooth/server.py#L19)
+file to correspond to this address.
+
+## Software: Host computer
 
 If you've assembled and installed everything correctly, you should be able to shutdown your Raspberry
 Pi, power it up with the battery, wait a few seconds for it to boot up, and run the 
