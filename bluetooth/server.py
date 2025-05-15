@@ -41,6 +41,7 @@ def handle_message(client, ant):
 
     except ConnectionResetError:
         print('Client disconnected')
+        more = False
 
     return more
 
@@ -76,11 +77,11 @@ def main():
             formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     parser.add_argument('-p', '--commport', help='com port',
-                        default='/dev/ttyACM0')
+                        default='/dev/ttyUSB0')
     parser.add_argument('-d', '--delay', help='startup delay in seconds',
                         type=float, default=0)
     parser.add_argument('-s', '--server', help='server address',
-                        default='B8:27:EB:75:E6:45')
+                        default='2C:CF:67:AA:92:66')
 
     args = parser.parse_args()
 

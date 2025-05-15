@@ -58,7 +58,6 @@ def stand(conn):
 
         send(conn, angles)
 
-
 def step(conn, max_time):
     '''
     Returns total time taken on this step, rounded to SLEEP
